@@ -9,17 +9,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
-    <!-- Chosen Palette: Slate Gray & Teal -->
-    <!-- Application Structure Plan: The application transforms the linear resume into a dynamic, multi-section single-page application. The structure is designed for a modern, engaging user flow: 1) An immediate 'Hero' section with a clear Call-to-Action (CTA). 2) An 'About' section for a personal summary. 3) An interactive 'Skills' section with a proficiency chart to visually quantify abilities. 4) A 'My Projects' section to showcase key work. 5) A 'Workflow' diagram to build client confidence. 6) A final 'Contact' section. This non-linear, thematic structure is more engaging than a static document and allows potential clients to quickly navigate to the information most relevant to them, improving usability. -->
-    <!-- Visualization & Content Choices: 
-        - Header/Contact Info: Goal(Inform) -> HTML Text -> Static -> Clear & accessible.
-        - Summary: Goal(Inform) -> HTML Text Block -> Static -> Provides a personal introduction.
-        - Key Skills: Goal(Organize/Compare) -> Chart.js Horizontal Bar Chart & HTML Tags -> Interactive (Chart animates, tags are visually distinct) -> A bar chart offers a much quicker and more impactful understanding of technical proficiency than a list. Grouped tags allow for easy scanning of creative and soft skills.
-        - My Projects: Goal(Showcase) -> HTML/CSS Card -> Static -> Highlights key projects with professional descriptions to demonstrate experience.
-        - Workflow: Goal(Build Trust) -> HTML/CSS Diagram -> Static Visual -> A simple flexbox-based visual flow demonstrates professionalism and a structured process, which is a key hiring consideration for clients.
-        - Portfolio Link: Goal(Action) -> HTML Button -> Clickable -> The primary CTA, styled for high visibility.
-    -->
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -68,6 +57,37 @@
              transform: translateY(-5px);
              box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
         }
+
+        /* --- Animation Keyframes and Classes --- */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in-down {
+            animation: fadeInDown 0.6s ease-out forwards;
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
     </style>
 </head>
 <body>
@@ -91,16 +111,16 @@
     </nav>
 
     <main>
-        <section id="home" class="bg-white">
+        <section id="home" class="bg-white overflow-hidden">
             <div class="max-w-7xl mx-auto py-20 px-4 sm:px-6 lg:px-8 text-center">
                 <h1 class="text-4xl md:text-6xl font-extrabold text-slate-800 tracking-tight">
-                    <span class="block">Darshan Jain</span>
-                    <span class="block text-teal-600 mt-2">Freelance Video Editor & Motion Graphics Artist</span>
+                    <span class="block animate-fade-in-down" style="animation-delay: 0.2s; opacity: 0;">Darshan Jain</span>
+                    <span class="block text-teal-600 mt-2 animate-fade-in-down" style="animation-delay: 0.4s; opacity: 0;">Freelance Video Editor & Motion Graphics Artist</span>
                 </h1>
-                <p class="mt-6 max-w-2xl mx-auto text-lg text-slate-600">
+                <p class="mt-6 max-w-2xl mx-auto text-lg text-slate-600 animate-fade-in-up" style="animation-delay: 0.6s; opacity: 0;">
                     Transforming raw footage into compelling visual stories that engage, inspire, and drive results.
                 </p>
-                <div class="mt-8 flex justify-center space-x-4">
+                <div class="mt-8 flex justify-center space-x-4 animate-fade-in-up" style="animation-delay: 0.8s; opacity: 0;">
                     <a href="#projects" class="inline-block bg-teal-600 text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-teal-700 transition-colors">View My Projects</a>
                     <a href="https://drive.google.com/drive/folders/1gkv6VQLQkdjP2hpK2k50Dz6E5SWqqjon?usp=drive_link" target="_blank" class="inline-block bg-slate-200 text-slate-800 font-bold py-3 px-8 rounded-full text-lg hover:bg-slate-300 transition-colors">See Full Portfolio</a>
                 </div>
@@ -328,3 +348,4 @@
     </script>
 </body>
 </html>
+```
