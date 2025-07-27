@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Darshan Jain - Freelance Video Editor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Slate Gray & Teal -->
+    <!-- Application Structure Plan: The application transforms the linear resume into a dynamic, multi-section single-page application. The structure is designed for a modern, engaging user flow: 1) An immediate 'Hero' section with a clear Call-to-Action (CTA). 2) An 'About' section for a personal summary. 3) An interactive 'Skills' section with a proficiency chart to visually quantify abilities. 4) A 'My Projects' section to showcase key work. 5) A 'Workflow' diagram to build client confidence. 6) A final 'Contact' section. This non-linear, thematic structure is more engaging than a static document and allows potential clients to quickly navigate to the information most relevant to them, improving usability. -->
+    <!-- Visualization & Content Choices: 
+        - Header/Contact Info: Goal(Inform) -> HTML Text -> Static -> Clear & accessible.
+        - Summary: Goal(Inform) -> HTML Text Block -> Static -> Provides a personal introduction.
+        - Key Skills: Goal(Organize/Compare) -> Chart.js Horizontal Bar Chart & HTML Tags -> Interactive (Chart animates, tags are visually distinct) -> A bar chart offers a much quicker and more impactful understanding of technical proficiency than a list. Grouped tags allow for easy scanning of creative and soft skills.
+        - My Projects: Goal(Showcase) -> HTML/CSS Card -> Static -> Highlights key projects with professional descriptions to demonstrate experience.
+        - Workflow: Goal(Build Trust) -> HTML/CSS Diagram -> Static Visual -> A simple flexbox-based visual flow demonstrates professionalism and a structured process, which is a key hiring consideration for clients.
+        - Portfolio Link: Goal(Action) -> HTML Button -> Clickable -> The primary CTA, styled for high visibility.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* slate-50 */
+            color: #334155; /* slate-700 */
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 400px;
+            max-height: 50vh;
+        }
+        .section-title {
+            font-weight: 800;
+            font-size: 2.25rem; /* text-4xl */
+            letter-spacing: -0.025em;
+            color: #1e293b; /* slate-800 */
+        }
+        .section-subtitle {
+            font-size: 1.125rem; /* text-xl */
+            color: #0d9488; /* teal-600 */
+            font-weight: 500;
+        }
+        .skill-tag {
+            background-color: #f1f5f9; /* slate-100 */
+            color: #475569; /* slate-600 */
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-weight: 500;
+            transition: all 0.2s ease-in-out;
+        }
+        .skill-tag:hover {
+            background-color: #ccfbf1; /* teal-100 */
+            color: #134e4a; /* teal-900 */
+        }
+        .project-highlight-card {
+            background-color: white;
+            border: 1px solid #e2e8f0; /* slate-200 */
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+        }
+        .project-highlight-card:hover {
+             transform: translateY(-5px);
+             box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <a href="#home" class="text-2xl font-bold text-slate-800">Darshan Jain</a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#about" class="text-slate-600 hover:text-teal-600 px-3 py-2 rounded-md text-sm font-medium">About</a>
+                        <a href="#skills" class="text-slate-600 hover:text-teal-600 px-3 py-2 rounded-md text-sm font-medium">Skills</a>
+                        <a href="#projects" class="text-slate-600 hover:text-teal-600 px-3 py-2 rounded-md text-sm font-medium">Projects</a>
+                        <a href="#contact" class="text-slate-600 hover:text-teal-600 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section id="home" class="bg-white">
+            <div class="max-w-7xl mx-auto py-20 px-4 sm:px-6 lg:px-8 text-center">
+                <h1 class="text-4xl md:text-6xl font-extrabold text-slate-800 tracking-tight">
+                    <span class="block">Darshan Jain</span>
+                    <span class="block text-teal-600 mt-2">Freelance Video Editor & Motion Graphics Artist</span>
+                </h1>
+                <p class="mt-6 max-w-2xl mx-auto text-lg text-slate-600">
+                    Transforming raw footage into compelling visual stories that engage, inspire, and drive results.
+                </p>
+                <div class="mt-8 flex justify-center space-x-4">
+                    <a href="#projects" class="inline-block bg-teal-600 text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-teal-700 transition-colors">View My Projects</a>
+                    <a href="https://drive.google.com/drive/folders/1gkv6VQLQkdjP2hpK2k50Dz6E5SWqqjon?usp=drive_link" target="_blank" class="inline-block bg-slate-200 text-slate-800 font-bold py-3 px-8 rounded-full text-lg hover:bg-slate-300 transition-colors">See Full Portfolio</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="section-subtitle">Who I Am</h2>
+                    <p class="section-title">About Me</p>
+                </div>
+                <div class="mt-12 max-w-3xl mx-auto text-lg text-slate-600 text-center leading-relaxed">
+                    <p>
+                        I am a highly creative and detail-oriented freelance video editor with a passion for storytelling. I am proficient in all stages of the post-production process, from initial media management and editing to color grading, sound design, and final delivery. My goal is to collaborate closely with clients to understand their vision and produce high-quality video content that not only meets their objectives but also captivates their target audience. I'm currently seeking to partner with innovative creators, brands, and agencies to create impactful video content.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="section-subtitle">My Capabilities</h2>
+                    <p class="section-title">Professional Skillset</p>
+                </div>
+                <div class="mt-12">
+                    <p class="text-center text-lg text-slate-600 mb-8">My technical proficiency allows me to bring any creative vision to life.</p>
+                    <div class="chart-container">
+                        <canvas id="skillsChart"></canvas>
+                    </div>
+                </div>
+                <div class="mt-20 grid grid-cols-1 md:grid-cols-2 gap-16">
+                    <div>
+                        <h3 class="text-2xl font-bold text-slate-800 text-center mb-6">Creative Skills</h3>
+                        <div class="flex flex-wrap gap-3 justify-center">
+                            <span class="skill-tag">Visual Storytelling</span>
+                            <span class="skill-tag">Pacing & Rhythm</span>
+                            <span class="skill-tag">Color Correction & Grading</span>
+                            <span class="skill-tag">Sound Design & Mixing</span>
+                            <span class="skill-tag">Compression & Codecs</span>
+                            <span class="skill-tag">Script Interpretation</span>
+                            <span class="skill-tag">Multicam Editing</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-slate-800 text-center mb-6">Soft Skills</h3>
+                        <div class="flex flex-wrap gap-3 justify-center">
+                            <span class="skill-tag">Client Communication</span>
+                            <span class="skill-tag">Project Management</span>
+                            <span class="skill-tag">Time Management & Deadlines</span>
+                            <span class="skill-tag">Attention to Detail</span>
+                            <span class="skill-tag">Collaborative & Independent</span>
+                            <span class="skill-tag">Problem-Solving</span>
+                            <span class="skill-tag">Constructive Feedback</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="section-subtitle">Featured Work</h2>
+                    <p class="section-title">My Projects</p>
+                    <p class="mt-4 max-w-2xl mx-auto text-lg text-slate-600">Here are highlights from my recent work, demonstrating my skills in real-world contexts.</p>
+                </div>
+                <div class="mt-12 max-w-3xl mx-auto space-y-8">
+                    <div class="project-highlight-card rounded-lg p-8">
+                        <h3 class="text-2xl font-bold text-slate-800">Short-Form Video Campaign: Code Kumbh Event</h3>
+                        <p class="text-md font-medium text-teal-600 mt-1">Jabalpur Linux User Group (JLUG)</p>
+                        <p class="mt-4 text-slate-600 leading-relaxed">
+                            Collaborated with the college club, JLUG, to produce a series of high-quality, short-form videos for their flagship 'Code Kumbh' event. My role involved editing raw footage into dynamic, engaging promotional content tailored for social media, resulting in increased event awareness and participation.
+                        </p>
+                    </div>
+                    <div class="project-highlight-card rounded-lg p-8">
+                        <h3 class="text-2xl font-bold text-slate-800">YouTube Channel Management</h3>
+                        <p class="text-md font-medium text-teal-600 mt-1">Personal Project</p>
+                        <p class="mt-4 text-slate-600 leading-relaxed">
+                            Independently grew and managed a personal YouTube channel, reaching over 1,000 subscribers. This involved handling all aspects of production, from content strategy and filming to editing, optimization (SEO), and audience engagement.
+                        </p>
+                    </div>
+                    <div class="project-highlight-card rounded-lg p-8">
+                        <h3 class="text-2xl font-bold text-slate-800">3D Gold YouTube Intro</h3>
+                        <p class="text-md font-medium text-teal-600 mt-1">Personal Project / YouTube Channel</p>
+                        <p class="mt-4 text-slate-600 leading-relaxed">
+                           Designed and animated a professional 3D gold text intro using After Effects templates. This project involved customizing templates, working with 3D layers, and rendering for high-quality YouTube output.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="workflow" class="py-24 bg-white">
+             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="section-subtitle">My Approach</h2>
+                    <p class="section-title">Editing Workflow</p>
+                    <p class="mt-4 max-w-2xl mx-auto text-lg text-slate-600">I follow a structured process to ensure quality and efficiency from start to finish.</p>
+                </div>
+                <div class="mt-12 flex flex-col md:flex-row items-center justify-center gap-4 md:gap-0">
+                    <div class="flex-1 text-center p-4">
+                        <div class="text-4xl font-bold text-teal-600">1</div>
+                        <h3 class="text-xl font-bold mt-2 text-slate-800">Pre-Production</h3>
+                        <p class="text-slate-600 mt-1">Consultation, script review, and media organization.</p>
+                    </div>
+                    <div class="text-2xl text-slate-300 hidden md:block mx-4">→</div>
+                    <div class="flex-1 text-center p-4">
+                        <div class="text-4xl font-bold text-teal-600">2</div>
+                        <h3 class="text-xl font-bold mt-2 text-slate-800">Assembly & Edit</h3>
+                        <p class="text-slate-600 mt-1">Crafting the narrative and pacing the story.</p>
+                    </div>
+                    <div class="text-2xl text-slate-300 hidden md:block mx-4">→</div>
+                    <div class="flex-1 text-center p-4">
+                        <div class="text-4xl font-bold text-teal-600">3</div>
+                        <h3 class="text-xl font-bold mt-2 text-slate-800">Refinement</h3>
+                        <p class="text-slate-600 mt-1">Color grading, sound mixing, and adding graphics.</p>
+                    </div>
+                     <div class="text-2xl text-slate-300 hidden md:block mx-4">→</div>
+                    <div class="flex-1 text-center p-4">
+                        <div class="text-4xl font-bold text-teal-600">4</div>
+                        <h3 class="text-xl font-bold mt-2 text-slate-800">Delivery</h3>
+                        <p class="text-slate-600 mt-1">Final export, compression, and delivery to client.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-24 bg-slate-800 text-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl font-extrabold tracking-tight">Ready to create something amazing?</h2>
+                <p class="mt-4 text-lg text-slate-300">Let's connect and discuss how I can help bring your video projects to life.</p>
+                <div class="mt-8">
+                    <a href="mailto:darshanjx@gmail.com" class="inline-block bg-teal-500 text-white font-bold py-4 px-10 rounded-full text-xl hover:bg-teal-600 transition-colors">
+                        darshanjx@gmail.com
+                    </a>
+                    <p class="mt-6 text-slate-400">Phone: 7024849708 | Location: Jabalpur, MP</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-slate-900">
+        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-slate-400 text-sm">&copy; 2025 Darshan Jain. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const skillsChartCanvas = document.getElementById('skillsChart');
+            const skillsChartData = {
+                labels: ['Adobe Premiere Pro', 'Adobe After Effects', 'Filmora', 'DaVinci Resolve', 'Motion Graphics', 'Media Management'],
+                datasets: [{
+                    label: 'Proficiency',
+                    data: [95, 85, 85, 90, 75, 98],
+                    backgroundColor: 'rgba(13, 148, 136, 0.6)',
+                    borderColor: 'rgba(15, 118, 110, 1)',
+                    borderWidth: 2,
+                    borderRadius: 4,
+                    borderSkipped: false,
+                }]
+            };
+
+            const skillsChartOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                indexAxis: 'y',
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        backgroundColor: '#1e293b',
+                        titleFont: { size: 14, weight: 'bold' },
+                        bodyFont: { size: 12 },
+                        padding: 10,
+                        cornerRadius: 4,
+                        displayColors: false,
+                    }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        max: 100,
+                        grid: {
+                            color: '#e2e8f0'
+                        },
+                        ticks: {
+                           display: false
+                        }
+                    },
+                    y: {
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            color: '#334155',
+                            font: {
+                                size: 14,
+                                weight: '500'
+                            }
+                        }
+                    }
+                }
+            };
+
+            let chart;
+            const observer = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) {
+                    if (!chart) {
+                         chart = new Chart(skillsChartCanvas, {
+                            type: 'bar',
+                            data: skillsChartData,
+                            options: skillsChartOptions
+                        });
+                    }
+                    observer.disconnect();
+                }
+            }, { threshold: 0.5 });
+
+            observer.observe(skillsChartCanvas);
+        });
+    </script>
+</body>
+</html>
